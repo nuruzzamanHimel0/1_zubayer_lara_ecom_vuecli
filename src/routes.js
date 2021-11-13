@@ -1,6 +1,11 @@
 
+import compFrontendmaster from './view/frontend/frontend_master.vue'
 
 export const routes = [
-    // { path: '/foo', component: Foo },
-    // { path: '/bar', component: Bar }
+    { 
+      path: '/',
+      component: compFrontendmaster,
+      name: "frontendmaster"
+    },
+ 
   ]
