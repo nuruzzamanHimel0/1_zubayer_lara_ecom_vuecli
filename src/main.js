@@ -12,6 +12,11 @@ const router = new VueRouter({
   mode: 'history'
 })
 
+import axios from 'axios';
+axios.defaults.baseURL = 'http://localhost/1_zubayer_lara_ecom_api/public/api';
+
+
+
 
 
 

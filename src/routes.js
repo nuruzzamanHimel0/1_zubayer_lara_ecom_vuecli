@@ -3,6 +3,7 @@ import compFrontendmaster from './view/frontend/frontend_master.vue'
 import compHome from './view/frontend/home.vue'
 import compLogin from './view/frontend/auth/login.vue'
 import compRegister from './view/frontend/auth/register.vue'
+import compLogout from './view/frontend/auth/logout.vue'
 
 export const routes = [
     { 
@@ -24,10 +25,15 @@ export const routes = [
        {
         path: 'register',
         component: compRegister,
-        name: 'register',
+        name: 'register'
+       },
+       {
+        path: 'logout',
+        component: compLogout,
+        name: 'logout'
        },
 
-       
+
       ]
     },
  

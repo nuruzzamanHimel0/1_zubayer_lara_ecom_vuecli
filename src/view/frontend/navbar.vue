@@ -22,13 +22,13 @@
 
           <ul class="navbar-nav ml-auto">
         
-          <li class="nav-item">
-            <router-link tag="a" :to="{ name: 'login'}" class="nav-link">LOGIN</router-link>
+         <li class="nav-item" v-if="token">
+            <router-link tag="a" :to="{name: 'logout'}" class="nav-link">Logout</router-link>
           </li>
-          <li class="nav-item">
-             <router-link tag="a" :to="{ name: 'register'}" class="nav-link">REGISTRATION</router-link>
+          <li class="nav-item" v-for="(value,key) in manus" :key="key" v-else>
+            <router-link tag="a" :to="{ name: value.route }" class="nav-link">{{ value.name }}</router-link>
+          </li>
         
-          </li>
 
       
       </ul>
@@ -38,3 +38,28 @@
 
     </div>
 </template>
+
+<script>
+import axios from 'axios'
+
+var token = localStorage.getItem('AToken');
+console.log("nav="+token);
+
+axios.defaults.headers.common['Authorization'] = "Bearer "+token;
+axios.defaults.headers.post['Content-Type'] = 'application/json';
+
+export default {
+  data(){
+    return {
+      token: token,
+      manus:[
+        {name:'Login',route:'login'},
+        {name:'Register',route:'register'},
+      ]
+    }
+  },
+  mounted() {
+  
+  }
+}
+</script>
