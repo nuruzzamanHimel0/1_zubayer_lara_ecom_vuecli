@@ -24,7 +24,7 @@ export default {
         logout(){
             // alert('he;');
             localStorage.removeItem('AToken');
-            this.$router.push({ name: 'home'});
+            // this.$router.push({ name: 'home'});
         }
     }
 }

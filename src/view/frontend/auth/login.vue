@@ -19,6 +19,9 @@
                             </div>
                         
                             <button type="submit" @click.prevent="usrLogin" class="btn btn-primary">LOGIN</button>
+
+                            <router-link tag="a" class="btn btn-success ml-3" :to="{ name: 'register'}"> Register </router-link>
+                              <!-- <router-link tag="a" :to="{name: 'logout'}" class="nav-link">Logout</router-link> -->
                         </div>
                     </div>
                 </div>

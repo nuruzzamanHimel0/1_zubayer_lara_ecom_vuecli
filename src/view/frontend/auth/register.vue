@@ -25,6 +25,8 @@
                             </div>
                         
                             <button type="submit" @click.prevent="userRegister" class="btn btn-primary">REGISTER</button>
+
+                              <router-link tag="a" class="btn btn-success ml-3" :to="{ name: 'login'}"> Login </router-link>
                         </div>
                     </div>
                 </div>
