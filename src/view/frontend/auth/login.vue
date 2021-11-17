@@ -53,9 +53,15 @@ export default {
                 email: this.user.email,
                 password: this.user.password,
             })
-            .then(function (response) {
-                localStorage.setItem('AToken',response.data.access_token);
+            .then( (response) => {
+                if(response.data.status == 'success'){
+
+                    localStorage.setItem('AToken',response.data.data.access_token);
+                    this.$router.push('/dashboard');
+                }
                 console.log(response);
+                
+              
             })
             .catch(function (error) {
                 console.log(error);

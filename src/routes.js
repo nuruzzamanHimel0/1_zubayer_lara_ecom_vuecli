@@ -8,6 +8,7 @@ import compRegister from './view/frontend/auth/register.vue'
 
 import compAuthmaster from './view/frontend/auth/auth-master.vue'
 
+import compAdminmaster from './view/admin/adminmaster.vue'
 
 export const routes = [
     { 
@@ -45,9 +46,14 @@ export const routes = [
           path: 'register',
           component: compRegister,
           name: 'register'
-         },
+        },
 
       ]
-    }
+    },
+    {
+      path: '/dashboard',
+      component: compAdminmaster,
+      name: 'dashboard'
+    },
  
   ]

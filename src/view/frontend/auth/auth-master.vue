@@ -9,16 +9,17 @@
     </div>
 
 </template>
-// <script>
 
-// export default {
+ <script>
 
-//     mounted() {
-//         var access_token = localStorage.getItem('AToken');
-//         if(access_token){
-//             this.$router.push('/dashboard')
-//         }
-//     },
+export default {
+
+    mounted() {
+        var access_token = localStorage.getItem('AToken');
+        if(access_token){
+            this.$router.push('/dashboard')
+        }
+    },
     
-// }
-// </script>
+}
+</script>

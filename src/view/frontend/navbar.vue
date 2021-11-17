@@ -43,7 +43,7 @@
 import axios from 'axios'
 
 var token = localStorage.getItem('AToken');
-console.log("nav="+token);
+console.log("nav = "+token);
 
 axios.defaults.headers.common['Authorization'] = "Bearer "+token;
 axios.defaults.headers.post['Content-Type'] = 'application/json';
