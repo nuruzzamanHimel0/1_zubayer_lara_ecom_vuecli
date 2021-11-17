@@ -53,7 +53,7 @@ export const routes = [
     {
       path: '/dashboard',
       component: compAdminmaster,
-      name: 'dashboard'
+      name: 'adminMaster'
     },
  
   ]
