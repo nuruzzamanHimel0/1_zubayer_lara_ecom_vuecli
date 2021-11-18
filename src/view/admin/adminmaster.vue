@@ -196,40 +196,9 @@
                     <div class="col-md-8 " style="margin-top: 23px;">
                         <div class="card">
                             <div class="card-body">
-                               <form>
-                                    <div class="form-group row">
-                                        <label for="category_name" class="col-sm-2 col-form-label">Category name</label>
-                                        <div class="col-sm-10">
-                                        <input type="text" readonly class="form-control-plaintext" name="category_name" id="category_name" value="email@example.com">
-                                        </div>
-                                    </div>
-                                     <div class="form-group row">
-                                        <label for="category_des" class="col-sm-2 col-form-label">Category Description</label>
-                                        <div class="col-sm-10">
-                                        <textarea class="form-control" name="category_des" id="category_des" rows="3"></textarea>
-                                        </div>
-                                    </div>
-                                     <div class="form-group row">
-                                        <label for="category_des" class="col-sm-2 col-form-label">Radio</label>
-                                        <div class="col-sm-10">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="publication_status" id="radio1" value="1" checked>
-                                                <label class="form-check-label"  for="radio1">
-                                                    Published
-                                                </label>
-                                                </div>
-                                                <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="publication_status" id="unpublishedid" value="0">
-                                                <label class="form-check-label" for="unpublishedid">
-                                                    Unpublished
-                                                </label>
-                                                </div>
-                                        </div>
-                                    </div>
+                                
+                                <router-view></router-view>
 
-                                      <button type="submit" class="btn btn-primary">Submit</button>
-                                    
-                                </form>
                             </div>
                         </div>
 

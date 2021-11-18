@@ -8,7 +8,9 @@ import compRegister from './view/frontend/auth/register.vue'
 
 import compAuthmaster from './view/frontend/auth/auth-master.vue'
 
-import compAdminmaster from './view/admin/adminmaster.vue'
+import compAdminmaster from './view/admin/adminmaster.vue';
+import compAdminhome from './view/admin/admin_hove.vue';
+import compAdminaddcategory from './view/admin/category/add_category.vue';
 
 export const routes = [
     { 
@@ -53,7 +55,20 @@ export const routes = [
     {
       path: '/dashboard',
       component: compAdminmaster,
-      name: 'adminMaster'
+      name: 'adminMaster',
+      redirect:{path:"dashboard/homepage"},
+      children:[
+        {
+          path: 'homepage',
+          component: compAdminhome,
+          name: 'homepage',
+        },
+        {
+          path: 'addcategory',
+          component: compAdminaddcategory,
+          name: 'addcategory',
+        },
+      ]
     },
  
   ]
