@@ -224,85 +224,59 @@
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
-            <div class="content-header">
-            <div class="container-fluid">
-                <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1 class="m-0">Starter Page</h1>
-                </div><!-- /.col -->
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active">Starter Page</li>
-                    </ol>
-                </div><!-- /.col -->
-                </div><!-- /.row -->
-            </div><!-- /.container-fluid -->
-            </div>
-            <!-- /.content-header -->
+         
 
             <!-- Main content -->
             <div class="content">
-            <div class="container-fluid">
-                <div class="row">
-                <div class="col-lg-6">
-                    <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
+                <div class="container-fluid mb-10">
+                    <div class="row justify-content-center">
+                    <div class="col-md-8 " style="margin-top: 23px;">
+                        <div class="card">
+                            <div class="card-body">
+                               <form>
+                                    <div class="form-group row">
+                                        <label for="category_name" class="col-sm-2 col-form-label">Category name</label>
+                                        <div class="col-sm-10">
+                                        <input type="text" readonly class="form-control-plaintext" name="category_name" id="category_name" value="email@example.com">
+                                        </div>
+                                    </div>
+                                     <div class="form-group row">
+                                        <label for="category_des" class="col-sm-2 col-form-label">Category Description</label>
+                                        <div class="col-sm-10">
+                                        <textarea class="form-control" name="category_des" id="category_des" rows="3"></textarea>
+                                        </div>
+                                    </div>
+                                     <div class="form-group row">
+                                        <label for="category_des" class="col-sm-2 col-form-label">Radio</label>
+                                        <div class="col-sm-10">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="publication_status" id="radio1" value="1" checked>
+                                                <label class="form-check-label"  for="radio1">
+                                                    Published
+                                                </label>
+                                                </div>
+                                                <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="publication_status" id="unpublishedid" value="0">
+                                                <label class="form-check-label" for="unpublishedid">
+                                                    Unpublished
+                                                </label>
+                                                </div>
+                                        </div>
+                                    </div>
 
-                        <p class="card-text">
-                        Some quick example text to build on the card title and make up the bulk of the card's
-                        content.
-                        </p>
+                                      <button type="submit" class="btn btn-primary">Submit</button>
+                                    
+                                </form>
+                            </div>
+                        </div>
 
-                        <a href="#" class="card-link">Card link</a>
-                        <a href="#" class="card-link">Another link</a>
+                    
                     </div>
+                
+                    <!-- /.col-md-6 -->
                     </div>
-
-                    <div class="card card-primary card-outline">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-
-                        <p class="card-text">
-                        Some quick example text to build on the card title and make up the bulk of the card's
-                        content.
-                        </p>
-                        <a href="#" class="card-link">Card link</a>
-                        <a href="#" class="card-link">Another link</a>
-                    </div>
-                    </div><!-- /.card -->
-                </div>
-                <!-- /.col-md-6 -->
-                <div class="col-lg-6">
-                    <div class="card">
-                    <div class="card-header">
-                        <h5 class="m-0">Featured</h5>
-                    </div>
-                    <div class="card-body">
-                        <h6 class="card-title">Special title treatment</h6>
-
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                    </div>
-
-                    <div class="card card-primary card-outline">
-                    <div class="card-header">
-                        <h5 class="m-0">Featured</h5>
-                    </div>
-                    <div class="card-body">
-                        <h6 class="card-title">Special title treatment</h6>
-
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                    </div>
-                </div>
-                <!-- /.col-md-6 -->
-                </div>
-                <!-- /.row -->
-            </div><!-- /.container-fluid -->
+                    <!-- /.row -->
+                </div><!-- /.container-fluid -->
             </div>
             <!-- /.content -->
         </div>
@@ -343,6 +317,8 @@ import("../../../node_modules/admin-lte/dist/css/adminlte.min.css");
 
 import("../../../node_modules/admin-lte/plugins/jquery/jquery.min.js");
 import("../../../node_modules/admin-lte/dist/js/adminlte.js");
+
+import('../../../node_modules/admin-lte/plugins/fontawesome-free/css/all.css');
 
 // import("../../../node_modules/admin-lte/dist/img");
 
