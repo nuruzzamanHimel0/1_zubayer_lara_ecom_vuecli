@@ -33,8 +33,8 @@
 <script>
 import axios from 'axios'
 var token = localStorage.getItem('AToken');
-console.log("login="+token);
-// window.token = localStorage.getItem('AToken');
+// console.log("login="+token);
+
 axios.defaults.headers.common['Authorization'] = "Bearer "+token;
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 
