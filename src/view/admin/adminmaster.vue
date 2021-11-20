@@ -27,6 +27,7 @@
                 <i class="fas fa-search"></i>
                 </a>
                 <div class="navbar-search-block">
+                 
                 <form class="form-inline">
                     <div class="input-group input-group-sm">
                     <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
@@ -139,6 +140,9 @@
                 <i class="fas fa-th-large"></i>
                 </a>
             </li>
+            <li class="nav-item">
+                    <a @click.prevent="logout"  class="btn btn-danger" > LOGOUT </a>
+            </li>
             </ul>
         </nav>
         <!-- /.navbar -->
@@ -238,7 +242,7 @@
 
 
 
-        <a @click.prevent="logout"  class="btn btn-danger" > LOGOUT </a>
+       
 
     </div>
 </template>

@@ -23,7 +23,7 @@
                             <td>{{value.category_description}}</td>
                             <td>{{value.created_at}}</td>
                             <td>
-                                <a href="" class="btn btn-success">Edit</a>
+                                <router-link tag="a" :to="{name: 'editCategory', params:{cat_id:value.id} }" class="btn btn-success">Edit</router-link>
                                 <a href="" class="btn btn-danger">Delete</a>
                             </td>
                         </tr>

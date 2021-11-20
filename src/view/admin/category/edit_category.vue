@@ -2,14 +2,15 @@
     <div>
         <div class="card">
             <div class="card-header">
-                <h2 class="text-center">Add category</h2>
+                <h2 class="text-center">Edit category({{ $route.params.cat_id }})</h2>
+                
             </div>
             <div class="card-body w-75" style="margin: 0 auto;">
-                 <form @submit.prevent="add_category" @keydown="form.onKeydown($event)">
+                 <form @submit.prevent="update_category" @keydown="form.onKeydown($event)">
                 <div class="form-group row">
                     <label for="category_name" class="col-sm-2 col-form-label">Category name: </label>
                     <div class="col-sm-10">
-                    <input type="text" v-model="form.category_name"  class="form-control" name="category_name" id="category_name" value="email@example.com">
+                    <input type="text" v-model="form.category_name"  class="form-control" name="category_name" id="category_name" value="">
                      <div v-if="form.errors.has('category_name')" v-html="form.errors.get('category_name')" />
                     </div>
 
@@ -44,7 +45,7 @@
                     </div>
                 </div>
 
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary">Update</button>
                 
                </form>
             </div>
@@ -55,7 +56,7 @@
 </template>
 
 <script>
-// import axios from 'axios';
+import axios from 'axios';
 import Form from 'vform';
 
 import iziToast from 'izitoast';
@@ -71,40 +72,47 @@ export default {
            
         }
     },
+    mounted(){
+        this.getCategoryByCatid();
+    },
+    computed:{
+       
+    },
     methods:{
-         async add_category () {
-            await this.form.post('http://localhost/1_zubayer_lara_ecom_api/public/api/category')
+         async update_category () {
+            await this.form.put('http://localhost/1_zubayer_lara_ecom_api/public/api/category/'+this.$route.params.cat_id)
             .then((response) =>{
-                this.$router.push({  name: 'allcategory'});
-                iziToast.show({
-                    title: 'Hey',
-                    message: 'What would you like to add?'
-                });
+                if(response.data.status == 'success'){
+                    iziToast.show({
+                        title: 'Hey',
+                        message: 'Category Update Successfully'
+                    });
+                    this.$router.push({  name: 'allcategory'});
+                }
+               
                 console.log(response);
             }).catch((error) =>{
                 console.log(error);
             });
         
+        },
+        getCategoryByCatid(){
+              axios.get(`/category/${this.$route.params.cat_id}`)
+            .then((response)=>{
+                if(response.data.status == 'success'){
+
+                    this.form.fill(response.data.data);
+                    // context.commit('getCategoryByCatidMutation',response.data.data);
+                }
+                
+                console.log(response.data);
+            }).catch((error) =>{
+                console.log(error);
+            });
+            // this.$store.dispatch('getCategoryByCatidAction',this.$route.params.cat_id);
         }
        
-        // add_category(){
-           
-
-        //  this.form.post('http://localhost/1_zubayer_lara_ecom_api/public/api/category', {
-        //         category_name: this.categories.category_name,
-        //             category_description: this.categories.category_description,
-        //             publication_status: this.categories.publication_status,
-        //     })
-        //     .then(function (response) {
-        //         console.log(response);
-        //     })
-        //     .catch(function (error) {
-        //         console.log(error);
-        //     });
-
        
-           
-        // }
     }
 }
 </script>

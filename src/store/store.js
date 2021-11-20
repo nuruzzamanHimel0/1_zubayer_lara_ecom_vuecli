@@ -10,6 +10,7 @@ export const store = new Vuex.Store({
     state: {
         auth:[],
         allcategory:[],
+        categoryByid:'',
        
     },
     getters:{
@@ -21,6 +22,9 @@ export const store = new Vuex.Store({
         },
         getAllCategoryGetters(state){
             return state.allcategory;
+        },
+        getCategoryByCatidGetters(state){
+            return state.categoryByid;
         }
         
        
@@ -36,6 +40,9 @@ export const store = new Vuex.Store({
         getAllCategoryMutation(state,data){
             state.allcategory = data;
             // console.log(data);
+        },
+        getCategoryByCatidMutation(state,data){
+            state.categoryByid = data;
         }
       
     },
@@ -82,7 +89,20 @@ export const store = new Vuex.Store({
             }).catch((error) =>{
                 console.log(error);
             });
-        }
+        },
+        // getCategoryByCatidAction(context,cat_id){
+        //     axios.get(`/category/${cat_id}`)
+        //     .then((response)=>{
+        //         if(response.data.status == 'success'){
+        //             context.commit('getCategoryByCatidMutation',response.data.data);
+        //         }
+                
+        //         console.log(response.data);
+        //     }).catch((error) =>{
+        //         console.log(error);
+        //     });
+        //     // alert(cat_id);
+        // }
        
     }
   })
