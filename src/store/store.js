@@ -9,6 +9,7 @@
 export const store = new Vuex.Store({
     state: {
         auth:[],
+        allcategory:[],
        
     },
     getters:{
@@ -17,6 +18,9 @@ export const store = new Vuex.Store({
         // },
         getAuthVisaAccesstoken(state){
             return state.auth;
+        },
+        getAllCategoryGetters(state){
+            return state.allcategory;
         }
         
        
@@ -27,6 +31,10 @@ export const store = new Vuex.Store({
         // },
         passignThenAccessTokenMutation(state,data){
             state.auth = data;
+            // console.log(data);
+        },
+        getAllCategoryMutation(state,data){
+            state.allcategory = data;
             // console.log(data);
         }
       
@@ -62,6 +70,18 @@ export const store = new Vuex.Store({
             });
 
             // console.log(access_token);
+        },
+        getAllCategoryAction(context){
+            axios.get("/category")
+            .then((response)=>{
+                if(response.data.status == 'success'){
+                    context.commit('getAllCategoryMutation',response.data.data);
+                }
+                
+                // console.log(response.data);
+            }).catch((error) =>{
+                console.log(error);
+            });
         }
        
     }

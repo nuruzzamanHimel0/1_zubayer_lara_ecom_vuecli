@@ -1,7 +1,8 @@
 <template>
     <div>
-         
-               <form @submit.prevent="add_category" @keydown="form.onKeydown($event)">
+        <div class="card">
+            <div class="card-body w-75" style="margin: 0 auto;">
+                 <form @submit.prevent="add_category" @keydown="form.onKeydown($event)">
                 <div class="form-group row">
                     <label for="category_name" class="col-sm-2 col-form-label">Category name: </label>
                     <div class="col-sm-10">
@@ -42,7 +43,11 @@
 
                     <button type="submit" class="btn btn-primary">Submit</button>
                 
-            </form>
+               </form>
+            </div>
+        </div>
+         
+              
     </div>
 </template>
 

@@ -13,14 +13,14 @@
                     <ul class="nav nav-treeview">
                    
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <router-link tag="a" :to="{ name: 'allcategory'}"  class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>All Categories</p>
-                        </a>
+                        </router-link>
                     </li>
                      <li class="nav-item">
                         <router-link tag="a" :to="{ name: 'addcategory'}"  class="nav-link">
-                        <i class="nav-icon fas fa-th"></i>
+                        <i class="far fa-circle nav-icon"></i>
                         <p>
                         Add Category
                         </p>

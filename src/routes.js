@@ -11,6 +11,7 @@ import compAuthmaster from './view/frontend/auth/auth-master.vue'
 import compAdminmaster from './view/admin/adminmaster.vue';
 import compAdminhome from './view/admin/admin_hove.vue';
 import compAdminaddcategory from './view/admin/category/add_category.vue';
+import compAdminallcategory from './view/admin/category/all_category.vue';
 
 export const routes = [
     { 
@@ -66,8 +67,16 @@ export const routes = [
         {
           path: 'addcategory',
           component: compAdminaddcategory,
-          name: 'addcategory',
+          name: 'addcategory'
         },
+        {
+          path: 'allcategory',
+          component: compAdminallcategory,
+          name: 'allcategory'
+        },
+
+
+
       ]
     },
  

@@ -150,7 +150,7 @@
             <img src="../../../node_modules/admin-lte/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
             <span class="brand-text font-weight-light">
                
-                {{ getAUth.name }}
+                {{ getAUth != "" ? getAUth.name : 'Demo' }}
             </span>
             </a>
 
@@ -162,7 +162,7 @@
                 <img src="../../../node_modules/admin-lte/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
                 </div>
                 <div class="info">
-                <a href="#" class="d-block"> {{ getAUth.name }}</a>
+                <a href="#" class="d-block">  {{ getAUth != "" ? getAUth.name : 'Demo' }}</a>
                 </div>
             </div>
 
@@ -196,14 +196,12 @@
             <div class="content">
                 <div class="container-fluid mb-10">
                     <div class="row justify-content-center">
-                    <div class="col-md-8 " style="margin-top: 23px;">
-                        <div class="card">
-                            <div class="card-body">
+                    <div class="col-md-12 " style="margin-top: 23px;">
+                        
                                 
-                                <router-view></router-view>
+                        <router-view></router-view>
 
-                            </div>
-                        </div>
+                           
 
                     
                     </div>
