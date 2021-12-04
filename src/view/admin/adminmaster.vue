@@ -254,13 +254,13 @@ import("../../../node_modules/admin-lte/dist/css/adminlte.min.css");
 //iziToast css  import
 import("../../../node_modules/izitoast/dist/css/iziToast.min.css");
 
-
+// ############ JS ############
 	
 // <!-- <link rel="stylesheet" href="iziToast.min.css"> -->
 
 import("../../../node_modules/admin-lte/plugins/jquery/jquery.min.js");
 import("../../../node_modules/admin-lte/dist/js/adminlte.js");
-
+// font awsome css
 import('../../../node_modules/admin-lte/plugins/fontawesome-free/css/all.css');
 //iziToast js import
 import("../../../node_modules/izitoast/dist/js/iziToast.min.js");

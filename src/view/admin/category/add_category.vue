@@ -78,7 +78,7 @@ export default {
                 this.$router.push({  name: 'allcategory'});
                 iziToast.show({
                     title: 'Hey',
-                    message: 'What would you like to add?'
+                    message: 'Added Category sessefully'
                 });
                 console.log(response);
             }).catch((error) =>{

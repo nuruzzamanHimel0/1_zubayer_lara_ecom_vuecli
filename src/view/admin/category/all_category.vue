@@ -24,7 +24,7 @@
                             <td>{{value.created_at}}</td>
                             <td>
                                 <router-link tag="a" :to="{name: 'editCategory', params:{cat_id:value.id} }" class="btn btn-success">Edit</router-link>
-                                <a href="" class="btn btn-danger">Delete</a>
+                                <a @click.prevent="deleteCategory(value.id)" class="btn btn-danger">Delete</a>
                             </td>
                         </tr>
                     </tbody>
@@ -37,10 +37,14 @@
 </template>
 
 <script>
-// import axios from 'axios';
+import axios from 'axios';
+
 // import Form from 'vform';
 
 // import iziToast from 'izitoast';
+
+// ES6 Modules or TypeScript
+import Swal from 'sweetalert2'
 
 export default {
    data(){
@@ -62,6 +66,36 @@ export default {
    methods:{
        getAllCategory(){
            this.$store.dispatch('getAllCategoryAction');
+       },
+       deleteCategory(catid){
+           Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+            if (result.isConfirmed) {
+                 axios.delete(`/category/${catid}`)
+                    .then((response)=>{
+                        if(response.data.status == 'success'){
+                            this.getAllCategory();
+                                Swal.fire(
+                                'Deleted!',
+                                'Your file has been deleted.',
+                                'success'
+                                )
+                        }
+                    }).catch((error)=>{
+                        console.log(error)
+                    });
+                
+            }
+            })
+          
+        //    alert(catid);
        }
    }
 }
