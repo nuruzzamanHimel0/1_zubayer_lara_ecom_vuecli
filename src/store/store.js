@@ -11,6 +11,7 @@ export const store = new Vuex.Store({
         auth:[],
         allcategory:[],
         categoryByid:'',
+        allpost:[],
        
     },
     getters:{
@@ -25,6 +26,9 @@ export const store = new Vuex.Store({
         },
         getCategoryByCatidGetters(state){
             return state.categoryByid;
+        },
+        getAllProductGetters(state){
+            return state.allpost;
         }
         
        
@@ -43,20 +47,15 @@ export const store = new Vuex.Store({
         },
         getCategoryByCatidMutation(state,data){
             state.categoryByid = data;
-        }
+        },
+        getAllProductMutation(state,data){
+            state.allpost = data;
+            // console.log(data);
+        },
       
     },
     actions: {
-        // getAllCategoryAction(context){
-        //     axios.get('/get-all-category')
-        //     .then((reflection)=>{
-        //         context.commit('getAllCategoryMutation',reflection.data.category);
-        //         // console.log(reflection.data);
-        //     }).catch((error)=>{
-        //         alert('server errors');
-        //     });
-        // },
-
+     
         passignThenAccessTokenAction(context,access_token){
 
          
@@ -90,6 +89,18 @@ export const store = new Vuex.Store({
                 console.log(error);
             });
         },
+        getAllProductAction(context){
+            axios.get("/product")
+            .then((response)=>{
+                if(response.data.status == 'success'){
+                    context.commit('getAllProductMutation',response.data.data);
+                }
+                
+                // console.log(response.data);
+            }).catch((error) =>{
+                console.log(error);
+            });
+        }
         // getCategoryByCatidAction(context,cat_id){
         //     axios.get(`/category/${cat_id}`)
         //     .then((response)=>{

@@ -13,6 +13,8 @@ import compAdminhome from './view/admin/admin_hove.vue';
 import compAdminaddcategory from './view/admin/category/add_category.vue';
 import compAdminallcategory from './view/admin/category/all_category.vue';
 import compAdmineditcategory from './view/admin/category/edit_category.vue';
+//product
+import compAdminallproduct from './view/admin/product/all_product.vue';
 
 export const routes = [
     { 
@@ -79,6 +81,12 @@ export const routes = [
           path: 'editCategory/:cat_id',
           component: compAdmineditcategory,
           name: 'editCategory'
+        },
+        //product
+        {
+          path: 'allproduct',
+          component: compAdminallproduct,
+          name: 'allproduct'
         },
 
 
