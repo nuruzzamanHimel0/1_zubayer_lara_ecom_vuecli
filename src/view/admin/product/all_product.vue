@@ -10,46 +10,49 @@
                 <b-button  class="btn btn-success float-right"  id="show-btn" @click="addProductModal">Add Product</b-button>
 
                     
-      
-
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>Product name</th>
-                            <th>Product category name</th>
-                            <th>Product short description</th>
-                            <th>Product price</th>
-                            <th>Product image</th>
-                            <th>Created at</th>
-                            <th>Action</th>
+                
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Product name</th>
+                                <th>Product category name</th>
+                                <th>Product short description</th>
+                                <th>Product price</th>
+                                <th>Product image</th>
+                                <th>Created at</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <tr v-for="(value,key) in allProducts" :key="key" >
+                            <td>{{key+1}}</td>
+                            <td>{{ value.product_name }}</td>
+                            <td> {{ value.category != null ?  value.category.category_name : '' }}</td>
+                            <td>
+                                {{ value.product_short_description }}
+                            </td>
+                            <td>
+                                {{ value.product_price }}
+                            </td>
+                            <td>
+                                <img :src="postImage(value.product_image)" alt="" style="width:80px;">
+                                <!-- <img :src="value.product_image" alt=""> -->
+                            </td>
+                            <td>
+                                {{ value.created_at }}
+                            </td>
+                            <td>
+                                <a href="" class="btn btn-success">Edit</a>
+                                <a href="" class="btn btn-danger">Edit</a>
+                            </td>
                         </tr>
-                    </thead>
-                    <tbody>
-                       <tr v-for="(value,key) in allProducts" :key="key" >
-                           <td>{{key+1}}</td>
-                           <td>{{ value.product_name }}</td>
-                           <td> {{  value.category.category_name }}</td>
-                           <td>
-                               {{ value.product_short_description }}
-                           </td>
-                           <td>
-                               {{ value.product_price }}
-                           </td>
-                           <td>
-                               <img :src="postImage(value.product_image)" alt="">
-                               <!-- <img :src="value.product_image" alt=""> -->
-                           </td>
-                           <td>
-                               {{ value.created_at }}
-                           </td>
-                           <td>
-                               <a href="" class="btn btn-success">Edit</a>
-                               <a href="" class="btn btn-danger">Edit</a>
-                           </td>
-                       </tr>
-                    </tbody>
-                    </table>
+                        </tbody>
+                        </table>
+                </div>
+
+                
             </div>
         </div>
 
@@ -185,10 +188,21 @@ export default {
         postImage(url){
             if(url.indexOf('https') != -1){
                 return url;
+            }else{
+                return "http://localhost/1_zubayer_lara_ecom_api/public/images/products/"+url;
             }
         },
          async product_add () {
-           await this.form.post('http://localhost/1_zubayer_lara_ecom_api/public/api/product');
+           await this.form.post('http://localhost/1_zubayer_lara_ecom_api/public/api/product')
+           .then((response)=>{
+               if(response.data.status == 'success'){
+                     this.$refs['addProductModal-modal'].hide();
+                     //v-form reset
+                     this.form.reset();
+                     // table data load
+                     this.getAllProduct();
+               }
+           });
            
             // alert('hlw');
         },
