@@ -69,13 +69,16 @@
                 </div>
 
                   
-
+                <!-- {{ allCategories }} -->
                  <div class="form-group">
                     <label for="category_id">Product Category</label>
                    <select class="form-control" id="category_id" name="category_id" v-model="form.category_id">
-                        <option value="1"> 1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
+                     
+                        <option v-for="(value,key) in allCategories" :key="key" :value="value.id">
+                            
+                             {{ value.category_name }}
+                        </option>
+                        
                        
                     </select>
                        <div class="text-danger" v-if="form.errors.has('category_id')" v-html="form.errors.get('category_id')" />
@@ -168,6 +171,7 @@ export default {
     },
     mounted(){
         this.getAllProduct();
+        this.getAllCategory();
     },
     created(){
 
@@ -175,12 +179,18 @@ export default {
     computed:{
         allProducts(){
             return this.$store.getters.getAllProductGetters;
-        }
+        },
+        allCategories(){
+           return this.$store.getters.getAllCategoryGetters;
+       }
     },
     methods:{
         addProductModal(){
              this.$refs['addProductModal-modal'].show();
-        },
+        }, 
+        getAllCategory(){
+           this.$store.dispatch('getAllCategoryAction');
+       },
         getAllProduct(){
             this.$store.dispatch('getAllProductAction');
             // alert('ahle');
