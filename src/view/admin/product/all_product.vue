@@ -45,7 +45,7 @@
                             </td>
                             <td>
                                 <a href="" class="btn btn-success">Edit</a>
-                                <a href="" class="btn btn-danger">Edit</a>
+                                <a href="" @click.prevent="product_delete(value.id)"  class="btn btn-danger">Delete</a>
                             </td>
                         </tr>
                         </tbody>
@@ -137,14 +137,14 @@
 </template>
 
 <script>
-// import axios from 'axios';
+import axios from 'axios';
 
 // // import Form from 'vform';
 
 // // import iziToast from 'izitoast';
 
-// // ES6 Modules or TypeScript
-// import Swal from 'sweetalert2'
+
+import Swal from 'sweetalert2'
 
 // import $ from 'jquery'
 
@@ -224,6 +224,38 @@ export default {
                 return this.form.product_image;
                 // console.log(str2 + " found");
             }
+        },
+        product_delete(id){
+             Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+            if (result.isConfirmed) {
+                 axios.delete(`/product/${id}`)
+                    .then((response)=>{
+                        if(response.data.status == 'success'){
+                            
+                                Swal.fire(
+                                'Deleted!',
+                                'Post file has been deleted.',
+                                'success'
+                                );
+                                this.getAllProduct();
+                        }
+                    }).catch((error)=>{
+                        console.log(error)
+                    });
+
+                //  alert(id);
+                
+            }
+            });
+           
         }
        
     }
