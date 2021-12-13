@@ -44,7 +44,7 @@
                                 {{ value.created_at }}
                             </td>
                             <td>
-                                <a href="" class="btn btn-success">Edit</a>
+                                <a href="" @click.prevent="editProductModal(value)"  class="btn btn-success">Edit</a>
                                 <a href="" @click.prevent="product_delete(value.id)"  class="btn btn-danger">Delete</a>
                             </td>
                         </tr>
@@ -57,81 +57,85 @@
         </div>
 
      
-        <b-modal size="lg" ref="addProductModal-modal" hide-footer title="Using Component Methods">
-        <div class="d-block ">
-            <form @submit.prevent="product_add" @keydown="form.onKeydown($event)" enctype='multipart/form-data' >
-               
-                <div class="form-group">
-                    <label for="product_name">Product name</label>
-                    
-                    <input v-model="form.product_name" type="text" class="form-control" id="product_name" name="product_name" placeholder="Enter product name">
-                  <div class="text-danger"  v-if="form.errors.has('product_name')" v-html="form.errors.get('product_name')" />
-                </div>
-
-                  
-                <!-- {{ allCategories }} -->
-                 <div class="form-group">
-                    <label for="category_id">Product Category</label>
-                   <select class="form-control" id="category_id" name="category_id" v-model="form.category_id">
-                     
-                        <option v-for="(value,key) in allCategories" :key="key" :value="value.id">
-                            
-                             {{ value.category_name }}
-                        </option>
-                        
-                       
-                    </select>
-                       <div class="text-danger" v-if="form.errors.has('category_id')" v-html="form.errors.get('category_id')" />
-                </div>
-                 <div class="form-group">
-                    <label for="product_short_description">Product short description</label>
-                    <textarea v-model="form.product_short_description" name="product_short_description" id="product_short_description" cols="30" rows="2" class="form-control" placeholder="Product short description"></textarea>
-                     <div class="text-danger" v-if="form.errors.has('product_short_description')" v-html="form.errors.get('product_short_description')" />
-                  
-                </div>
-                <div class="form-group">
-                    <label for="product_long_description">Product long description</label>
-                    <textarea  v-model="form.product_long_description" name="product_long_description" id="product_long_description"  cols="30" rows="4" class="form-control" placeholder="Product long description"></textarea>
-                     <div class="text-danger" v-if="form.errors.has('product_long_description')" v-html="form.errors.get('product_long_description')" />
-                  
-                </div>
-                <div class="form-group">
-                    <label for="product_price">Product Price</label>
-                    <input v-model="form.product_price" type="number" name="product_price" id="product_price"   placeholder="Product Price" class="form-control">
-                      <div class="text-danger" v-if="form.errors.has('product_price')" v-html="form.errors.get('product_price')" />
-                  
-                </div>
-
-                <div class="form-group">
-                   
-                      <div class="form-group">
-                            <label for="product_image">Product Image </label>
-                            <input type="file" @change="changePhoto($event)" class="form-control-file" id="product_image" name="product_image" value="">
-                            <img v-if="form.product_image " :src="postPhoto()" alt="" class="img-fluid">
-                               <div class="text-danger" v-if="form.errors.has('publication_status')" v-html="form.errors.get('publication_status')" />
-                        </div>
-                   
+        <b-modal size="lg"  ref="addProductModal-modal" hide-footer id="product_modal" >
+              <template #modal-title>
+                 {{ editMode ? "Product Update" : 'Product Add'  }} 
+            </template>
+            <div class="d-block ">
+                <form @submit.prevent=" editMode == true ? product_update() : product_add()" @keydown="form.onKeydown($event)" enctype='multipart/form-data' >
                 
-                </div>
-                <div class="form-group">
-                     <label for="publication_status">Publication Status</label>
-                     <div class="custom-control custom-radio">
-                        <input v-model="form.publication_status" type="radio" id="customRadio1" name="publication_status" class="custom-control-input" value="1">
-                        <label class="custom-control-label" for="customRadio1">Published</label>
+                    <div class="form-group">
+                        <label for="product_name">Product name</label>
+                        
+                        <input v-model="form.product_name" type="text" class="form-control" id="product_name" name="product_name" placeholder="Enter product name">
+                    <div class="text-danger"  v-if="form.errors.has('product_name')" v-html="form.errors.get('product_name')" />
                     </div>
-                    <div class="custom-control custom-radio">
-                        <input v-model="form.publication_status" type="radio" id="customRadio2" name="publication_status" class="custom-control-input" value="0">
-                        <label class="custom-control-label" for="customRadio2">Unpublished</label>
+
+                    
+                    <!-- {{ allCategories }} -->
+                    <div class="form-group">
+                        <label for="category_id">Product Category</label>
+                    <select class="form-control" id="category_id" name="category_id" v-model="form.category_id">
+                        
+                            <option v-for="(value,key) in allCategories" :key="key" :value="value.id">
+                                
+                                {{ value.category_name }}
+                            </option>
+                            
+                        
+                        </select>
+                        <div class="text-danger" v-if="form.errors.has('category_id')" v-html="form.errors.get('category_id')" />
                     </div>
-                     <div class="text-danger" v-if="form.errors.has('publication_status')" v-html="form.errors.get('publication_status')" />
-                </div>
-               
-               
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
-        </div>
+                    <div class="form-group">
+                        <label for="product_short_description">Product short description</label>
+                        <textarea v-model="form.product_short_description" name="product_short_description" id="product_short_description" cols="30" rows="2" class="form-control" placeholder="Product short description"></textarea>
+                        <div class="text-danger" v-if="form.errors.has('product_short_description')" v-html="form.errors.get('product_short_description')" />
+                    
+                    </div>
+                    <div class="form-group">
+                        <label for="product_long_description">Product long description</label>
+                        <textarea  v-model="form.product_long_description" name="product_long_description" id="product_long_description"  cols="30" rows="4" class="form-control" placeholder="Product long description"></textarea>
+                        <div class="text-danger" v-if="form.errors.has('product_long_description')" v-html="form.errors.get('product_long_description')" />
+                    
+                    </div>
+                    <div class="form-group">
+                        <label for="product_price">Product Price</label>
+                        <input v-model="form.product_price" type="number" name="product_price" id="product_price"   placeholder="Product Price" class="form-control">
+                        <div class="text-danger" v-if="form.errors.has('product_price')" v-html="form.errors.get('product_price')" />
+                    
+                    </div>
+
+                    <div class="form-group">
+                    
+                        <div class="form-group">
+                                <label for="product_image">Product Image </label>
+                                <input type="file" @change="changePhoto($event)" class="form-control-file" id="product_image" name="product_image" value="">
+                                <img v-if="form.product_image " :src="postModalPhoto()" alt="" class="img-fluid">
+                                <div class="text-danger" v-if="form.errors.has('publication_status')" v-html="form.errors.get('publication_status')" />
+                            </div>
+                    
+                    
+                    </div>
+                    <div class="form-group">
+                        <label for="publication_status">Publication Status</label>
+                        <div class="custom-control custom-radio">
+                            <input v-model="form.publication_status" type="radio" id="customRadio1" name="publication_status" class="custom-control-input" value="1">
+                            <label class="custom-control-label" for="customRadio1">Published</label>
+                        </div>
+                        <div class="custom-control custom-radio">
+                            <input v-model="form.publication_status" type="radio" id="customRadio2" name="publication_status" class="custom-control-input" value="0">
+                            <label class="custom-control-label" for="customRadio2">Unpublished</label>
+                        </div>
+                        <div class="text-danger" v-if="form.errors.has('publication_status')" v-html="form.errors.get('publication_status')" />
+                    </div>
+                
+                
+                    <button type="submit" v-if="editMode" class="btn btn-primary">Update Product</button>
+                    <button type="submit" v-else class="btn btn-primary">Add Product</button>
+                </form>
+            </div>
        
-    </b-modal>
+         </b-modal>
                 
                    
    
@@ -157,8 +161,9 @@ export default {
     data(){
         return {
             // products:[],
-            // editMode:false,
+            editMode:false,
             form: new Form({
+                id: '',
                 product_name: '',
                 category_id: '',
                 product_short_description: '',
@@ -185,9 +190,7 @@ export default {
        }
     },
     methods:{
-        addProductModal(){
-             this.$refs['addProductModal-modal'].show();
-        }, 
+       
         getAllCategory(){
            this.$store.dispatch('getAllCategoryAction');
        },
@@ -202,6 +205,13 @@ export default {
                 return "http://localhost/1_zubayer_lara_ecom_api/public/images/products/"+url;
             }
         },
+         addProductModal(){
+            this.editMode = false;
+            this.form.reset();
+            // $("#product_modal").attr('title');
+            // alert($("#product_modal").attr('title'));
+            this.$refs['addProductModal-modal'].show();
+        }, 
          async product_add () {
            await this.form.post('http://localhost/1_zubayer_lara_ecom_api/public/api/product')
            .then((response)=>{
@@ -216,6 +226,20 @@ export default {
            
             // alert('hlw');
         },
+         async product_update () {
+           await this.form.put('http://localhost/1_zubayer_lara_ecom_api/public/api/product/'+this.form.id)
+           .then((response)=>{
+               if(response.data.status == 'success'){
+                     this.$refs['addProductModal-modal'].hide();
+                     //v-form reset
+                     this.form.reset();
+                     // table data load
+                     this.getAllProduct();
+               }
+           });
+           
+            // alert('update');
+        },
         changePhoto(event){
             var file = event.target.files[0];
             var reader = new FileReader();
@@ -228,11 +252,17 @@ export default {
 
             reader.readAsDataURL(file);
         },
-        postPhoto(){
+        postModalPhoto(){
               let str1 = this.form.product_image;
             if(str1.indexOf('data') != -1){
                 return this.form.product_image;
                 // console.log(str2 + " found");
+            }
+            if(str1.indexOf('https') != -1){
+                return this.form.product_image;
+                // console.log(str2 + " found");
+            }else{
+                  return "http://localhost/1_zubayer_lara_ecom_api/public/images/products/"+str1;
             }
         },
         product_delete(id){
@@ -266,6 +296,12 @@ export default {
             }
             });
            
+        },
+        editProductModal(value){
+             this.editMode = true;
+             this.$refs['addProductModal-modal'].show();
+             this.form.fill(value);
+            // alert(id);
         }
        
     }
