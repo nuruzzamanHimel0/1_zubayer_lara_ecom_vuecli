@@ -52,8 +52,20 @@
 
                              <div class="form-group">
                                 <label for="product_image">Product Image</label>
+
                                 <input type="file" @change="modalImageChange($event)" name="product_image" class="form-control-file" id="product_image">
-                                <img v-if="form.product_image" :src="modalImageLoad()" alt="">
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                            <h2  v-if="form.product_image == '' " >Please Select Image</h2>
+                                          <img v-if="form.product_image" :src="modalImageLoad()" alt="">
+                                    </div>
+                                    <div class="col-md-12">
+                                        <button v-if="form.product_image != '' " @click.prevent="removeImage" class="btn btn-danger">Remove Image</button>
+                                       
+                                    </div>
+                                </div>
+                              
                                <div v-if="form.errors.has('product_image')" v-html="form.errors.get('product_image')" />
                             </div>
                             
@@ -64,7 +76,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="publication_status">Product Price</label>
+                                <label for="publication_status">Product Status</label>
                                  <div class="form-check">
                                      <input v-model="form.publication_status" class="form-check-input" type="radio" name="publication_status" id="exampleRadios1" value="1" checked>
                                 <label class="form-check-label" for="exampleRadios1">
@@ -169,6 +181,7 @@ export default {
                 product_image: '',
             }),
             editModal:true,
+            imageBool:true,
         }
     },
     mounted(){
@@ -305,6 +318,9 @@ export default {
              });
        
         },
+        removeImage(){
+            this.form.product_image = "";
+        }
         
      
        
