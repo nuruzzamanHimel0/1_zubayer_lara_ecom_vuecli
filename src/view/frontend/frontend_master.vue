@@ -1,6 +1,6 @@
 <template>
     <div id="frontendmaster">
-        <comNavbar></comNavbar>
+        <!-- <comNavbar></comNavbar> -->
         
         <router-view></router-view>
        
@@ -8,7 +8,12 @@
 </template>
 
 <script>
-import comNavbar from './navbar.vue'
+// import comNavbar from './navbar.vue'
+
+import("../../assets/frontend/css/main.css");
+import("../../assets/frontend/css/responsive.css");
+import("../../assets/frontend/css/all.css");
+
 
 export default {
     data(){
@@ -17,7 +22,7 @@ export default {
         }
     },
     components:{
-        comNavbar,
+        // comNavbar,
     }
 }
 </script>
