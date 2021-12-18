@@ -58,10 +58,10 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                             <h2  v-if="form.product_image == '' " >Please Select Image</h2>
-                                          <img v-if="form.product_image" :src="modalImageLoad()" alt="">
+                                          <img v-if="form.product_image" :src="modalImageLoad()" alt="" style="width:300px;height:300px;">
                                     </div>
                                     <div class="col-md-12">
-                                        <button v-if="form.product_image != '' " @click.prevent="removeImage" class="btn btn-danger">Remove Image</button>
+                                        <button v-if="form.product_image" @click.prevent="removeImage" class="btn btn-danger">Remove Image</button>
                                        
                                     </div>
                                 </div>
@@ -156,7 +156,7 @@
 
 // // import Form from 'vform';
 
-// // import iziToast from 'izitoast';
+import iziToast from 'izitoast';
 
 
 import Swal from 'sweetalert2'
@@ -230,21 +230,30 @@ export default {
                     this.allProductsMethods();
 
                  }
-                 console.log(response);
+                //  console.log(response);
                 
              });
        
         },
         modalImageChange(event){
               var file = event.target.files[0];
-                var reader = new FileReader();
+            //   console.log(file.size);
+            if(file.size < 2097152){
+                  var reader = new FileReader();
                 reader.onload = (e) =>{
                     this.form.product_image = e.target.result;
                     // The file's text will be printed here
-                    console.log(e.target.result)
+                    // console.log(e.target.result)
                 };
 
                 reader.readAsDataURL(file);
+            }else{
+            iziToast.warning({
+                    title: 'Caution',
+                    message: "Product image is ="+file.size/1024 + " MB that is less  then 2 mb"
+            });
+            }
+              
         },
         modalImageLoad(){
             let url = this.form.product_image;
@@ -257,7 +266,7 @@ export default {
             // console.log(url);
         },
         deleteProduct(id){
-            console.log(id);
+            // console.log(id);
             Swal.fire({
                 title: 'Are you sure?',
                 text: "You won't be able to revert this!",
@@ -313,7 +322,7 @@ export default {
                         );
 
                  }
-                 console.log(response);
+                //  console.log(response);
                 
              });
        
