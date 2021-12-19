@@ -228,9 +228,10 @@
                             <!--Single product start-->
                                 <div class="product-wrapper">
                                     <div class="product-img">
-                                        <a href="#"> <img :src="productImage(value.product_image)" alt=""></a>
-                                        <a href="#"> <img class="secondary-img" src="../../assets/frontend/img/product-img/product1.jpg"
-                                                alt=""></a>
+                                        <router-link :to="{name:'productDetails', params:{id:value.id}}" > <img :src="productImage(value.product_image)" alt=""></router-link >
+
+                                        <router-link  :to="{name:'productDetails', params:{id:value.id}}"> <img class="secondary-img" src="../../assets/frontend/img/product-img/product1.jpg"
+                                                alt=""></router-link >
                                         <span>hot</span>
                                         <div class="product-action">
                                             <a href="#"><i class="far fa-eye"></i></a>

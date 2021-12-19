@@ -1,6 +1,7 @@
 
 import compFrontendmaster from './view/frontend/frontend_master.vue'
 import compHome from './view/frontend/home.vue'
+import compProductDetails from './view/frontend/products/product-details.vue'
 
 import compLogin from './view/frontend/auth/login.vue'
 import compRegister from './view/frontend/auth/register.vue'
@@ -28,11 +29,11 @@ export const routes = [
         component: compHome,
         name: 'home',
        },
-      //  {
-      //   path: 'logout',
-      //   component: compLogout,
-      //   name: 'logout'
-      //  },
+       {
+        path: 'product-details/:id',
+        component: compProductDetails,
+        name: 'productDetails'
+       },
 
 
       ]

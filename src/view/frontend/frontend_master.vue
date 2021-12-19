@@ -13,6 +13,8 @@
 import("../../assets/frontend/css/main.css");
 import("../../assets/frontend/css/responsive.css");
 import("../../assets/frontend/css/all.css");
+import("../../assets/frontend/css/meanmenu.css");
+
 
 
 export default {

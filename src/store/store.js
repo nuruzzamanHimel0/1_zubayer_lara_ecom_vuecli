@@ -12,6 +12,7 @@ export const store = new Vuex.Store({
         allcategory:[],
         categoryByid:'',
         allpost:[],
+        productById:[]
        
     },
     getters:{
@@ -29,6 +30,9 @@ export const store = new Vuex.Store({
         },
         getAllProductGetters(state){
             return state.allpost;
+        },
+        getProductbyIdGetters(state){
+            return state.productById;
         }
         
        
@@ -52,6 +56,9 @@ export const store = new Vuex.Store({
             state.allpost = data;
             // console.log(data);
         },
+        getProductbyIdMutations(state,data){
+            state.productById = data;
+        }
       
     },
     actions: {
@@ -97,6 +104,19 @@ export const store = new Vuex.Store({
                 }
                 
                 // console.log(response.data);
+            }).catch((error) =>{
+                console.log(error);
+            });
+        },
+        getProductbyIdActions(context,id){
+            // alert(id);
+            axios.get(`/product/${id}`)
+            .then((response)=>{
+                if(response.data.status == 'success'){
+                    context.commit('getProductbyIdMutations',response.data.data);
+                }
+                
+                console.log(response.data);
             }).catch((error) =>{
                 console.log(error);
             });
