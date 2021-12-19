@@ -223,220 +223,42 @@
                         <div class="col-12"><h3>Latest Product</h3></div>
                     </div>
                     <div class="row">
-                        <div class="col-md-3">
+                       
+                        <div v-for="(value,key) in allProducts" :key="key" class="col-md-3">
                             <!--Single product start-->
-                                            <div class="product-wrapper">
-                                                <div class="product-img">
-                                                    <a href="#"> <img src="../../assets/frontend/img/product-img/product2.jpg" alt=""></a>
-                                                    <a href="#"> <img class="secondary-img" src="../../assets/frontend/img/product-img/product1.jpg"
-                                                            alt=""></a>
-                                                    <span>hot</span>
-                                                    <div class="product-action">
-                                                        <a href="#"><i class="far fa-eye"></i></a>
-                                                        <a href="#"><i class="fas fa-balance-scale"></i></a>
-                                                        <a href="#"><i class="fas fa-heart"></i></a>
-                                                    </div>
-                                                </div>
-                                                <div class="product-content text-center">
-                                                    <h3><a href="#">Water Repellent Parka</a></h3>
-                                                    <div class="rating">
-                                                        <i class="fas far fa-star"></i>
-                                                        <i class="fas far fa-star"></i>
-                                                        <i class="fas far fa-star"></i>
-                                                        <i class="fas far fa-star"></i>
-                                                        <i class="fas far fa-star"></i>
-                                                    </div>
-                                                    <div class="price">
-                                                        <span>$ 229.9 </span>
-                                                        <span><del>$239.9</del></span>
-                                                    </div>
-                                                    <div class="cart-btn">
-                                                        <form action="" method="POST" class="cart-and-action">
-                                                            <div class="">
-                                                                <div class="float-left">
-                                                                    <input type="hidden" name="product_quantity" value="1">
-                                                                    <input type="hidden" name="product_id" value="">
-                                                                </div>
-                                                            </div>
-                                                            <div class="cart-pro">
-                                                                <button class="btn btn-outline-dark btn-lg " type="submit">Add to cart</button>
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        <!--Single product End-->
+                                <div class="product-wrapper">
+                                    <div class="product-img">
+                                        <a href="#"> <img :src="productImage(value.product_image)" alt=""></a>
+                                        <a href="#"> <img class="secondary-img" src="../../assets/frontend/img/product-img/product1.jpg"
+                                                alt=""></a>
+                                        <span>hot</span>
+                                        <div class="product-action">
+                                            <a href="#"><i class="far fa-eye"></i></a>
+                                            <a href="#"><i class="fas fa-balance-scale"></i></a>
+                                            <a href="#"><i class="fas fa-heart"></i></a>
+                                        </div>
+                                    </div>
+                                    <div class="product-content text-center">
+                                        <h3><a href="#">{{value.product_name}}</a></h3>
+                                        <div class="rating">
+                                            <i class="fas far fa-star"></i>
+                                            <i class="fas far fa-star"></i>
+                                            <i class="fas far fa-star"></i>
+                                            <i class="fas far fa-star"></i>
+                                            <i class="fas far fa-star"></i>
+                                        </div>
+                                        <div class="price">
+                                            <span>$ 229.9 </span>
+                                            <span><del>$239.9</del></span>
+                                        </div>
+                                        <div class="cart-btn">
+                                            <a href="#">Add to cart</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            <!--Single product End-->
                         </div>
-                        <div class="col-md-3">
-                            <!--Single product start-->
-                                            <div class="product-wrapper">
-                                                <div class="product-img">
-                                                    <a href="#"> <img src="../../assets/frontend/img/product-img/product2.jpg" alt=""></a>
-                                                    <a href="#"> <img class="secondary-img" src="../../assets/frontend/img/product-img/product1.jpg"
-                                                            alt=""></a>
-                                                    <span>hot</span>
-                                                    <div class="product-action">
-                                                        <a href="#"><i class="far fa-eye"></i></a>
-                                                        <a href="#"><i class="fas fa-balance-scale"></i></a>
-                                                        <a href="#"><i class="fas fa-heart"></i></a>
-                                                    </div>
-                                                </div>
-                                                <div class="product-content text-center">
-                                                    <h3><a href="#">Water Repellent Parka</a></h3>
-                                                    <div class="rating">
-                                                        <i class="fas far fa-star"></i>
-                                                        <i class="fas far fa-star"></i>
-                                                        <i class="fas far fa-star"></i>
-                                                        <i class="fas far fa-star"></i>
-                                                        <i class="fas far fa-star"></i>
-                                                    </div>
-                                                    <div class="price">
-                                                        <span>$ 229.9 </span>
-                                                        <span><del>$239.9</del></span>
-                                                    </div>
-                                                    <div class="cart-btn">
-                                                        <a href="#">Add to cart</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        <!--Single product End-->
-                        </div>
-                        <div class="col-md-3">
-                            <!--Single product start-->
-                                            <div class="product-wrapper">
-                                                <div class="product-img">
-                                                    <a href="#"> <img src="../../assets/frontend/img/product-img/product2.jpg" alt=""></a>
-                                                    <a href="#"> <img class="secondary-img" src="../../assets/frontend/img/product-img/product1.jpg"
-                                                            alt=""></a>
-                                                    <span>hot</span>
-                                                    <div class="product-action">
-                                                        <a href="#"><i class="far fa-eye"></i></a>
-                                                        <a href="#"><i class="fas fa-balance-scale"></i></a>
-                                                        <a href="#"><i class="fas fa-heart"></i></a>
-                                                    </div>
-                                                </div>
-                                                <div class="product-content text-center">
-                                                    <h3><a href="#">Water Repellent Parka</a></h3>
-                                                    <div class="rating">
-                                                        <i class="fas far fa-star"></i>
-                                                        <i class="fas far fa-star"></i>
-                                                        <i class="fas far fa-star"></i>
-                                                        <i class="fas far fa-star"></i>
-                                                        <i class="fas far fa-star"></i>
-                                                    </div>
-                                                    <div class="price">
-                                                        <span>$ 229.9 </span>
-                                                        <span><del>$239.9</del></span>
-                                                    </div>
-                                                    <div class="cart-btn">
-                                                        <a href="#">Add to cart</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        <!--Single product End-->
-                        </div>
-                <div class="col-md-3">
-                            <!--Single product start-->
-                                            <div class="product-wrapper">
-                                                <div class="product-img">
-                                                    <a href="#"> <img src="../../assets/frontend/img/product-img/product2.jpg" alt=""></a>
-                                                    <a href="#"> <img class="secondary-img" src="../../assets/frontend/img/product-img/product1.jpg"
-                                                            alt=""></a>
-                                                    <span>hot</span>
-                                                    <div class="product-action">
-                                                        <a href="#"><i class="far fa-eye"></i></a>
-                                                        <a href="#"><i class="fas fa-balance-scale"></i></a>
-                                                        <a href="#"><i class="fas fa-heart"></i></a>
-                                                    </div>
-                                                </div>
-                                                <div class="product-content text-center">
-                                                    <h3><a href="#">Water Repellent Parka</a></h3>
-                                                    <div class="rating">
-                                                        <i class="fas far fa-star"></i>
-                                                        <i class="fas far fa-star"></i>
-                                                        <i class="fas far fa-star"></i>
-                                                        <i class="fas far fa-star"></i>
-                                                        <i class="fas far fa-star"></i>
-                                                    </div>
-                                                    <div class="price">
-                                                        <span>$ 229.9 </span>
-                                                        <span><del>$239.9</del></span>
-                                                    </div>
-                                                    <div class="cart-btn">
-                                                        <a href="#">Add to cart</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        <!--Single product End-->
-                        </div>
-                        <div class="col-md-3">
-                            <!--Single product start-->
-                                            <div class="product-wrapper">
-                                                <div class="product-img">
-                                                    <a href="#"> <img src="../../assets/frontend/img/product-img/product2.jpg" alt=""></a>
-                                                    <a href="#"> <img class="secondary-img" src="../../assets/frontend/img/product-img/product1.jpg"
-                                                            alt=""></a>
-                                                    <span>hot</span>
-                                                    <div class="product-action">
-                                                        <a href="#"><i class="far fa-eye"></i></a>
-                                                        <a href="#"><i class="fas fa-balance-scale"></i></a>
-                                                        <a href="#"><i class="fas fa-heart"></i></a>
-                                                    </div>
-                                                </div>
-                                                <div class="product-content text-center">
-                                                    <h3><a href="#">Water Repellent Parka</a></h3>
-                                                    <div class="rating">
-                                                        <i class="fas far fa-star"></i>
-                                                        <i class="fas far fa-star"></i>
-                                                        <i class="fas far fa-star"></i>
-                                                        <i class="fas far fa-star"></i>
-                                                        <i class="fas far fa-star"></i>
-                                                    </div>
-                                                    <div class="price">
-                                                        <span>$ 229.9 </span>
-                                                        <span><del>$239.9</del></span>
-                                                    </div>
-                                                    <div class="cart-btn">
-                                                        <a href="#">Add to cart</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        <!--Single product End-->
-                        </div>
-                        <div class="col-md-3">
-                            <!--Single product start-->
-                                            <div class="product-wrapper">
-                                                <div class="product-img">
-                                                    <a href="#"> <img src="../../assets/frontend/img/product-img/product2.jpg" alt=""></a>
-                                                    <a href="#"> <img class="secondary-img" src="../../assets/frontend/img/product-img/product1.jpg"
-                                                            alt=""></a>
-                                                    <span>hot</span>
-                                                    <div class="product-action">
-                                                        <a href="#"><i class="far fa-eye"></i></a>
-                                                        <a href="#"><i class="fas fa-balance-scale"></i></a>
-                                                        <a href="#"><i class="fas fa-heart"></i></a>
-                                                    </div>
-                                                </div>
-                                                <div class="product-content text-center">
-                                                    <h3><a href="#">Water Repellent Parka</a></h3>
-                                                    <div class="rating">
-                                                        <i class="fas far fa-star"></i>
-                                                        <i class="fas far fa-star"></i>
-                                                        <i class="fas far fa-star"></i>
-                                                        <i class="fas far fa-star"></i>
-                                                        <i class="fas far fa-star"></i>
-                                                    </div>
-                                                    <div class="price">
-                                                        <span>$ 229.9 </span>
-                                                        <span><del>$239.9</del></span>
-                                                    </div>
-                                                    <div class="cart-btn">
-                                                        <a href="#">Add to cart</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        <!--Single product End-->
-                        </div>
+                       
                 </div>
                 </div>
             </section>
@@ -541,3 +363,34 @@
 
     </div>
 </template>
+
+<script>
+export default {
+    data(){
+        return {
+
+        }
+    },
+    mounted(){
+         this.allProductsMethods();
+    },
+    created(){},
+    methods:{
+        allProductsMethods(){
+            this.$store.dispatch("getAllProductAction");
+        },
+        productImage(url){
+            if(url.indexOf('https') != -1){
+                return "https://picsum.photos/200/300";
+            }else{
+                return "http://localhost/1_zubayer_lara_ecom_api/public/images/products/"+url;
+            }
+        }
+    },
+    computed:{
+        allProducts(){
+            return this.$store.getters.getAllProductGetters;
+        },
+    }
+}
+</script>
