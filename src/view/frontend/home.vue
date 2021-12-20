@@ -223,9 +223,9 @@
                         <div class="col-12"><h3>Latest Product</h3></div>
                     </div>
                     <div class="row">
-                       
-                        <div v-for="(value,key) in allProducts" :key="key" class="col-md-3">
-                            <!--Single product start-->
+                       <!-- {{ laravelData }} -->
+                        <div v-for="(value,key) in laravelData.data" :key="key" class="col-md-3">
+                        
                                 <div class="product-wrapper">
                                     <div class="product-img">
                                         <router-link :to="{name:'productDetails', params:{id:value.id}}" > <img :src="productImage(value.product_image)" alt=""></router-link >
@@ -257,17 +257,16 @@
                                         </div>
                                     </div>
                                 </div>
-                            <!--Single product End-->
+                          
                         </div>
+
+                        <pagination :data="laravelData" @pagination-change-page="getResults"></pagination>
+                       
                        
                 </div>
                 </div>
             </section>
-            <!--Product Area-->
-           
-        
-            <!--Brand-section End-->
-            <!--Footer-section start-->
+       
             <footer>
                 <div class="container">
                     <div class="footer-area">
@@ -366,20 +365,27 @@
 </template>
 
 <script>
+ import axios from 'axios';
+
 export default {
     data(){
         return {
-
+            laravelData: {},
         }
     },
     mounted(){
-         this.allProductsMethods();
+         this.getResults();
     },
     created(){},
     methods:{
-        allProductsMethods(){
-            this.$store.dispatch("getAllProductAction");
-        },
+        
+        getResults(page = 1) {
+			axios.get('/product_paginate?page=' + page)
+				.then(response => {
+					this.laravelData = response.data.data;
+                    // console.log(response.data);
+				});
+		},
         productImage(url){
             if(url.indexOf('https') != -1){
                 return "https://picsum.photos/200/300";
@@ -389,9 +395,7 @@ export default {
         }
     },
     computed:{
-        allProducts(){
-            return this.$store.getters.getAllProductGetters;
-        },
+        
     }
 }
 </script>

@@ -4,7 +4,7 @@ import App from './App.vue'
 //vuex install
 import {store} from './store/store.js'
 
-
+// 
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 
 // Import Bootstrap an BootstrapVue CSS files (order is important)
@@ -15,6 +15,9 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 Vue.use(BootstrapVue)
 // Optionally install the BootstrapVue icon components plugin
 Vue.use(IconsPlugin)
+
+// vuejs laravel paginate
+Vue.component('pagination', require('laravel-vue-pagination'));
 
 
 // ******* vue router integration *****
