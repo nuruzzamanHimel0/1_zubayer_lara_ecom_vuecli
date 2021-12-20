@@ -1,6 +1,8 @@
 <template>
     <div id="frontendmaster">
         <!-- <comNavbar></comNavbar> -->
+
+        <compHeader></compHeader>
         
         <router-view></router-view>
        
@@ -9,6 +11,8 @@
 
 <script>
 // import comNavbar from './navbar.vue'
+
+import compHeader from './header.vue'
 
 import("../../assets/frontend/css/main.css");
 import("../../assets/frontend/css/responsive.css");
@@ -25,6 +29,7 @@ export default {
     },
     components:{
         // comNavbar,
+        compHeader,
     }
 }
 </script>
