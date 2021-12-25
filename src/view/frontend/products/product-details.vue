@@ -16,7 +16,7 @@
                 </div>
             </div>
         </div>
-        {{ product_computed }}
+    
    
          <div class="product-details-area">
             <div class="container">
